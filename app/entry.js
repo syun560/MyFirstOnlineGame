@@ -69,7 +69,7 @@ function ticker() {
     if (!gameObj.myPlayerObj || !gameObj.playersMap) return;
     
     gameObj.ctxRader.clearRect(0, 0, gameObj.raderCanvasWidth, gameObj.raderCanvasHeight); //まっさら
-    drawRader(gameObj.ctxRader);
+    // drawRader(gameObj.ctxRader);
     drawMap(gameObj);
     drawPlayer(gameObj.ctxRader, gameObj.myPlayerObj);
     if (gameObj.myPlayerObj.isAlive === false && gameObj.myPlayerObj.deadCount > 60) {
@@ -254,14 +254,14 @@ function drawMap(gameObj) {
             }
 
             const degDiff = calcDegDiffFromRader(gameObj.deg, distanceObj.deg);
-            const toumeido = calcOpacity(degDiff);
+            // const toumeido = calcOpacity(degDiff);
 
             const drawRadius = gameObj.counter % 12 + 2 + 12;
             const clearRadius = drawRadius - 2;
             const drawRadius2 = gameObj.counter % 12 + 2;
             const clearRadius2 = drawRadius2 - 2;
 
-            gameObj.ctxRader.fillStyle = `rgba(0, 0, 255, ${toumeido})`;
+            gameObj.ctxRader.fillStyle = `rgb(0, 0, 255)`;
             gameObj.ctxRader.beginPath();
             gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, drawRadius, 0, Math.PI * 2, true);
             gameObj.ctxRader.fill();
@@ -271,7 +271,7 @@ function drawMap(gameObj) {
             gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, clearRadius, 0, Math.PI * 2, true);
             gameObj.ctxRader.fill();
 
-            gameObj.ctxRader.fillStyle = `rgba(0, 0, 255, ${toumeido})`;
+            gameObj.ctxRader.fillStyle = `rgb(0, 0, 255)`;
             gameObj.ctxRader.beginPath();
             gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, drawRadius2, 0, Math.PI * 2, true);
             gameObj.ctxRader.fill();
@@ -283,8 +283,8 @@ function drawMap(gameObj) {
 
             if (tekiPlayerObj.displayName === 'anonymous') {
 
-                gameObj.ctxRader.strokeStyle = `rgba(250, 250, 250, ${toumeido})`;
-                gameObj.ctxRader.fillStyle = `rgba(250, 250, 250, ${toumeido})`;
+                gameObj.ctxRader.strokeStyle = `rgba(250, 250, 250)`;
+                gameObj.ctxRader.fillStyle = `rgba(250, 250, 250)`;
                 gameObj.ctxRader.beginPath();
                 gameObj.ctxRader.moveTo(distanceObj.drawX, distanceObj.drawY);
                 gameObj.ctxRader.lineTo(distanceObj.drawX + 20, distanceObj.drawY - 20);
@@ -296,8 +296,8 @@ function drawMap(gameObj) {
 
             } else if (tekiPlayerObj.displayName) {
 
-                gameObj.ctxRader.strokeStyle = `rgba(250, 250, 250, ${toumeido})`;
-                gameObj.ctxRader.fillStyle = `rgba(250, 250, 250, ${toumeido})`;
+                gameObj.ctxRader.strokeStyle = `rgba(250, 250, 250)`;
+                gameObj.ctxRader.fillStyle = `rgba(250, 250, 250)`;
                 gameObj.ctxRader.beginPath();
                 gameObj.ctxRader.moveTo(distanceObj.drawX, distanceObj.drawY);
                 gameObj.ctxRader.lineTo(distanceObj.drawX + 20, distanceObj.drawY - 20);
@@ -324,9 +324,9 @@ function drawMap(gameObj) {
         if (distanceObj.distanceX <= (gameObj.raderCanvasWidth / 2) && distanceObj.distanceY <= (gameObj.raderCanvasHeight / 2)){
             
             const degDiff = calcDegDiffFromRader(gameObj.deg, distanceObj.deg);
-            const opacity = calcOpacity(degDiff);
+            // const opacity = calcOpacity(degDiff);
 
-            gameObj.ctxRader.fillStyle = `rgba(255, 165, 0, ${opacity})`;
+            gameObj.ctxRader.fillStyle = `rgb(255, 165, 0)`;
             gameObj.ctxRader.beginPath();
             gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, gameObj.itemRadius, 0, Math.PI * 2, true);
             gameObj.ctxRader.fill();
@@ -347,9 +347,9 @@ function drawMap(gameObj) {
         if (distanceObj.distanceX <= (gameObj.raderCanvasWidth / 2) && distanceObj.distanceY <= (gameObj.raderCanvasHeight / 2)){
             
             const degDiff = calcDegDiffFromRader(gameObj.deg, distanceObj.deg);
-            const opacity = calcOpacity(degDiff);
+            // const opacity = calcOpacity(degDiff);
 
-            gameObj.ctxRader.fillStyle = `rgba(0, 220, 255, ${opacity})`;
+            gameObj.ctxRader.fillStyle = `rgb(0, 220, 255)`;
             gameObj.ctxRader.beginPath();
             gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, gameObj.airRadius, 0, Math.PI * 2, true);
             gameObj.ctxRader.fill();
@@ -397,7 +397,7 @@ function drawMap(gameObj) {
             } else { // 他人のミサイルの描画
 
                 const degDiff = calcDegDiffFromRader(gameObj.deg, distanceObj.deg);
-                const opacity = calcOpacity(degDiff);
+                // const opacity = calcOpacity(degDiff);
 
                 const drawRadius1 = gameObj.counter % 8 + 2 + 20;
                 const clearRadius1 = drawRadius1 - 2;
@@ -406,7 +406,7 @@ function drawMap(gameObj) {
                 const drawRadius3 = gameObj.counter % 8 + 2 + 0;
                 const clearRadius3 = drawRadius3 - 2;
 
-                gameObj.ctxRader.fillStyle = `rgba(255, 0, 0, ${opacity})`;
+                gameObj.ctxRader.fillStyle = `rgb(255, 0, 0)`;
                 gameObj.ctxRader.beginPath();
                 gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, drawRadius1, 0, Math.PI * 2, true);
                 gameObj.ctxRader.fill();
@@ -416,7 +416,7 @@ function drawMap(gameObj) {
                 gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, clearRadius1, 0, Math.PI * 2, true);
                 gameObj.ctxRader.fill();
 
-                gameObj.ctxRader.fillStyle = `rgba(255, 0, 0, ${opacity})`;
+                gameObj.ctxRader.fillStyle = `rgba(255, 0, 0)`;
                 gameObj.ctxRader.beginPath();
                 gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, drawRadius2, 0, Math.PI * 2, true);
                 gameObj.ctxRader.fill();
@@ -426,7 +426,7 @@ function drawMap(gameObj) {
                 gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, clearRadius2, 0, Math.PI * 2, true);
                 gameObj.ctxRader.fill();
 
-                gameObj.ctxRader.fillStyle = `rgba(255, 0, 0, ${opacity})`;
+                gameObj.ctxRader.fillStyle = `rgba(255, 0, 0)`;
                 gameObj.ctxRader.beginPath();
                 gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, drawRadius3, 0, Math.PI * 2, true);
                 gameObj.ctxRader.fill();
@@ -436,8 +436,8 @@ function drawMap(gameObj) {
                 gameObj.ctxRader.arc(distanceObj.drawX, distanceObj.drawY, clearRadius3, 0, Math.PI * 2, true);
                 gameObj.ctxRader.fill();
 
-                gameObj.ctxRader.strokeStyle = `rgba(250, 250, 250, ${opacity})`;
-                gameObj.ctxRader.fillStyle = `rgba(250, 250, 250, ${opacity})`;
+                gameObj.ctxRader.strokeStyle = `rgba(250, 250, 250)`;
+                gameObj.ctxRader.fillStyle = `rgba(250, 250, 250)`;
                 gameObj.ctxRader.beginPath();
                 gameObj.ctxRader.moveTo(distanceObj.drawX, distanceObj.drawY);
                 gameObj.ctxRader.lineTo(distanceObj.drawX + 30, distanceObj.drawY - 30);
